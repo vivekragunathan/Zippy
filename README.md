@@ -2,7 +2,7 @@
 
 _Zippy is the pet name of the pre-assignment project_. 😜
 
->To know more about the problem, read [here](README.md).
+>To know more about the problem, read [here](Problem.md).
 
 **NOTES**
 
