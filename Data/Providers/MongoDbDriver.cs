@@ -10,7 +10,7 @@ using Zippy.Utils;
 
 namespace Zippy.Data.Providers
 {
-    public class MongoDbDriver : IZDbDriver
+	public class MongoDbDriver : IZDbDriver
 	{
 		private const string ZIPPY_DB_NAME = "zippy";
 		private const string COLLECTIONS_PERSON = "persons";
