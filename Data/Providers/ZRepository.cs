@@ -7,100 +7,103 @@ using Zippy.Utils;
 
 namespace Zippy.Data.Providers
 {
-    public class ZRepository : IZRepository, IDisposable
-    {
-        private const string DEFAULT_API_KEY = "AIzaSyAF2dX9X2Mo4VpHwlgmaJgW4ps6saHAzNo";
+	/// <summary>
+	/// See IZRepository for more information
+	/// </summary>
+	public class ZRepository : IZRepository, IDisposable
+	{
+		private const string DEFAULT_API_KEY = "AIzaSyAF2dX9X2Mo4VpHwlgmaJgW4ps6saHAzNo";
 
-        private readonly IZDbDriver db;
-        private readonly IZCache cache;
+		private readonly IZDbDriver db;
+		private readonly IZCache cache;
 
-        public ZRepository(IZDbDriver db, IZCache cache)
-        {
-            this.db = db;
-            this.cache = cache;
-        }
+		public ZRepository(IZDbDriver db, IZCache cache)
+		{
+			this.db = db;
+			this.cache = cache;
+		}
 
-        #region IZRepository Interface Implementation
+		#region IZRepository Interface Implementation
 
-        public string GetApiKey()
-        {
-            // Read from database or appsettings file
-            return DEFAULT_API_KEY;
-        }
+		public string GetApiKey()
+		{
+			// Read from database or appsettings file
+			return DEFAULT_API_KEY;
+		}
 
-        public async Task<Person> FindPersonAsync(string name)
-        {
-            var person = cache.FindPerson(name);
+		public async Task<Person> FindPersonAsync(string name)
+		{
+			var person = cache.FindPerson(name);
 
-            if (person != null)
-            {
-                return person;
-            }
+			if (person != null)
+			{
+				return person;
+			}
 
-            person = await db.FindPersonAsync(name);
+			person = await db.FindPersonAsync(name);
 
-            if (person != null)
-            {
-                cache.UpsertPerson(person);
-            }
+			if (person != null)
+			{
+				cache.UpsertPerson(person);
+			}
 
-            return person;
-        }
+			return person;
+		}
 
-        /// This is just a representational implementation. A
-        /// realtime implementation would be guarded by and
-        /// involve streaming rather then quering all records
-        /// from the database.
-        public async Task<ISet<Person>> FindPersons(string zip)
-        {
-            var fromCache = cache.FindPersons(zip);
-            var fromDb = await db.FindPersonsAsync(zip);
-            return Helpers.DistinctOf(fromCache, fromDb);
-        }
+		/// This is just a representational implementation. A
+		/// realtime implementation would be guarded by and
+		/// involve streaming rather then quering all records
+		/// from the database.
+		public async Task<ISet<Person>> FindPersons(string zip)
+		{
+			var fromCache = cache.FindPersons(zip);
+			var fromDb = await db.FindPersonsAsync(zip);
+			return Helpers.DistinctOf(fromCache, fromDb);
+		}
 
-        public async Task UpsertAsync(Person person)
-        {
-            Throw.IfNull(person, "Cannot save/update null person");
+		public async Task UpsertAsync(Person person)
+		{
+			Throw.IfNull(person, "Cannot save/update null person");
 
-            var task = FindPersonAsync(person.Name);
-            var p2 = task.Result;
+			var task = FindPersonAsync(person.Name);
+			var p2 = task.Result;
 
-            if (p2 == null)
-            {
-                await db.SaveAsync(person);
-            }
-            else
-            {
-                await db.UpdateAsync(person);
-            }
+			if (p2 == null)
+			{
+				await db.SaveAsync(person);
+			}
+			else
+			{
+				await db.UpdateAsync(person);
+			}
 
-            cache.UpsertPerson(person);
-        }
+			cache.UpsertPerson(person);
+		}
 
-        #endregion
+		#endregion
 
-        #region IDisposable Interface Implementation
+		#region IDisposable Interface Implementation
 
-        private bool disposedValue = false; // To detect redundant calls
+		private bool disposedValue = false; // To detect redundant calls
 
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    db.Dispose();
-                }
+		protected virtual void Dispose(bool disposing)
+		{
+			if (!disposedValue)
+			{
+				if (disposing)
+				{
+					db.Dispose();
+				}
 
-                disposedValue = true;
-            }
-        }
+				disposedValue = true;
+			}
+		}
 
-        public void Dispose()
-        {
-            Dispose(true);
-        }
+		public void Dispose()
+		{
+			Dispose(true);
+		}
 
-        #endregion
-    }
+		#endregion
+	}
 }

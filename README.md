@@ -20,7 +20,7 @@ _Zippy is the pet name of the pre-assignment project_. 😜
 		- Simple - LiteDB: simple fast NoSQL like serveless single-file-based database for virtually all kinds of environments (mobile ready)
 		- Ideal - MongoDB or RavenDB
 
-		First choice was LiteDB so that it is easy to demonstrate the data persistence functionality in the application. There were issues loading saved data, which was taking time to resolve. To save time and produce a working solution that demonstrates data persistence, a third dumber (rather than simpler) approach - JSON file dump, has been adopted. For that matter, even the respective class has been named `DumpDbDriver`. Although it cannot be an option for real time, `DumpDbDriver` demonstrates the data persistence abilities in the context of Zipper.
+		First choice was LiteDB so that it is easy to demonstrate the data persistence functionality in the application. There were issues loading saved data, which was taking time to resolve. To save time and produce a working solution that demonstrates data persistence, a third dumber (rather than simpler) approach - JSON file dump, has been adopted. For that matter, even the respective class has been named `DumpDbDriver`. Although it cannot be an option for real time, `DumpDbDriver` demonstrates the data persistence abilities in the context of Zippy.
 - Project/Code Organization
 	- `Controllers/`
 	- `Services/`

@@ -1,59 +1,69 @@
-using System;
 using System.Runtime.Serialization;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using Zippy.Utils;
 
 namespace Zippy.Models
 {
-    [DataContract]
-    public class Person
-    {
-        public Person()
-        {
-        }
+	[DataContract]
+	public class Person
+	{
+		public const string FIELD_NAME = "name";
+		public const string FIELD_ADDRESS = "address";
+		public const string FIELD_ZIP = "zipcode";
 
-        public Person(string name, string address, string zip)
-        {
-            Throw.IfBlank(name, $"{nameof(name)} cannot be blank");
-            Throw.IfBlank(address, $"{nameof(address)} cannot be blank");
-            Throw.IfBlank(zip, $"{nameof(zip)} cannot be blank");
+		public Person()
+		{
+		}
 
-            Id = new Random(3571).Next();
-            Name = name;
-            Address = address;
-            ZipCode = zip;
-        }
+		public Person(string name, string address, string zip)
+		{
+			Throw.IfBlank(name, $"{nameof(name)} cannot be blank");
+			Throw.IfBlank(address, $"{nameof(address)} cannot be blank");
+			Throw.IfBlank(zip, $"{nameof(zip)} cannot be blank");
 
-        [DataMember]
-        public int Id { get; internal set; }
+			Id = ObjectId.GenerateNewId();
+			Name = name;
+			Address = address;
+			ZipCode = zip;
+		}
 
-        [DataMember]
-        public string Name { get; internal set; }
+		/*[DataMember]
+		public int Id { get; internal set; }*/
 
-        [DataMember]
-        public string Address { get; internal set; }
+		public ObjectId Id { get; internal set; }
 
-        [DataMember]
-        public string ZipCode { get; internal set; }
+		[DataMember]
+		[BsonElement(FIELD_NAME)]
+		public string Name { get; internal set; }
 
-        public override bool Equals(object other)
-        {
-            if (other is Person)
-            {
-                var that = (Person)other;
-                return string.Equals(this.Name, that.Name);
-            }
+		[DataMember]
+		[BsonElement(FIELD_ADDRESS)]
+		public string Address { get; internal set; }
 
-            return false;
-        }
+		[DataMember]
+		[BsonElement(FIELD_ZIP)]
+		public string ZipCode { get; internal set; }
 
-        public override int GetHashCode()
-        {
-            return Name.GetHashCode();
-        }
+		public override bool Equals(object other)
+		{
+			if (other is Person)
+			{
+				var that = (Person)other;
+				return string.Equals(this.Name, that.Name);
+			}
 
-        public override string ToString()
-        {
-            return $"{Name} {ZipCode} ({Address})";
-        }
-    }
+			return false;
+		}
+
+		public override int GetHashCode()
+		{
+			return Name.GetHashCode();
+		}
+
+		public override string ToString()
+		{
+			return $"{Name} {ZipCode} ({Address})";
+		}
+	}
 }

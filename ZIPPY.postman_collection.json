@@ -60,7 +60,7 @@
 		{
 			"id": "0d1d7801-a6ec-6481-a05e-467f95e623a7",
 			"headers": "",
-			"url": "http://{{host}}:{{port}}/{{controller}}/persons?zip=94085",
+			"url": "http://{{host}}:{{port}}/zippy/persons?zip=94085",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
@@ -79,7 +79,7 @@
 		{
 			"id": "1d6600bb-f5ee-6aef-6af7-cbec46ba41fc",
 			"headers": "",
-			"url": "http://{{host}}:{{port}}/{{controller}}/",
+			"url": "http://{{host}}:{{port}}/zippy/",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
@@ -89,7 +89,7 @@
 			"currentHelper": "normal",
 			"helperAttributes": {},
 			"time": 1482189428525,
-			"name": "Zipper/",
+			"name": "Zippy/",
 			"description": "",
 			"collectionId": "a8ea80fa-7f32-b7b1-a55e-39bba1ac84a0",
 			"responses": []
@@ -97,7 +97,7 @@
 		{
 			"id": "54a552b1-8f38-5f24-60a4-ff5c34f6e4f1",
 			"headers": "",
-			"url": "http://{{host}}:{{port}}/{{controller}}/persons?zip=abcd",
+			"url": "http://{{host}}:{{port}}/zippy/persons?zip=abcd",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
@@ -116,7 +116,7 @@
 		{
 			"id": "676ccdb7-34e9-ffa9-331c-b1f8fe79ed69",
 			"headers": "Content-Type: application/json\n",
-			"url": "http://{{host}}:{{port}}/{{controller}}/locate",
+			"url": "http://{{host}}:{{port}}/zippy/locate",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "POST",
@@ -136,7 +136,7 @@
 		{
 			"id": "7f90c513-cb7d-73e9-0454-db6cb568e3af",
 			"headers": "",
-			"url": "http://{{host}}:{{port}}/{{controller}}/person/Lakendra Mcandrew",
+			"url": "http://{{host}}:{{port}}/zippy/person/Lakendra Mcandrew",
 			"pathVariables": {},
 			"preRequestScript": null,
 			"method": "GET",
@@ -166,7 +166,7 @@
 			"currentHelper": "normal",
 			"helperAttributes": {},
 			"time": 1482189433937,
-			"name": "Zipper (No /, No Index)",
+			"name": "Zippy (No /, No Index)",
 			"description": "",
 			"collectionId": "a8ea80fa-7f32-b7b1-a55e-39bba1ac84a0",
 			"responses": []
@@ -174,7 +174,7 @@
 		{
 			"id": "a0073d37-6df7-8b38-5600-d0a1418bcef7",
 			"headers": "",
-			"url": "http://{{host}}:{{port}}/{{controller}}/locate?name=oink&address=720+Amphitheatre+Ave",
+			"url": "http://{{host}}:{{port}}/zippy/locate?name=oink&address=720+Amphitheatre+Ave",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
@@ -193,7 +193,7 @@
 		{
 			"id": "a3e17cc1-6bbd-15bc-8afd-372cef41b411",
 			"headers": "",
-			"url": "http://{{host}}:{{port}}/{{controller}}/locate?name=meow&address=1600+Amphitheatre+Pkwy",
+			"url": "http://{{host}}:{{port}}/zippy/locate?name=meow&address=1600+Amphitheatre+Pkwy",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
@@ -212,7 +212,7 @@
 		{
 			"id": "af61cf08-2f9b-f772-4f3a-c01e1f977d95",
 			"headers": "",
-			"url": "http://{{host}}:{{port}}/{{controller}}/person/MEOW",
+			"url": "http://{{host}}:{{port}}/zippy/person/MEOW",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
@@ -231,7 +231,7 @@
 		{
 			"id": "c4dce7aa-a578-4b68-4f5c-095800d7e944",
 			"headers": "",
-			"url": "http://{{host}}:{{port}}/{{controller}}/persons?zip=94043",
+			"url": "http://{{host}}:{{port}}/zippy/persons?zip=94043",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
@@ -249,7 +249,7 @@
 		{
 			"id": "cd5a3a8c-b9c2-489c-1348-9bf9fe05f132",
 			"headers": "",
-			"url": "http://{{host}}:{{port}}/{{controller}}/locate?name=woof&address=810+W+Maude+Ave",
+			"url": "http://{{host}}:{{port}}/zippy/locate?name=woof&address=810+W+Maude+Ave",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
@@ -268,7 +268,7 @@
 		{
 			"id": "ef904b0c-0828-0176-5ed7-1d511ab2e0ed",
 			"headers": "Content-Type: application/json\n",
-			"url": "http://{{host}}:{{port}}/{{controller}}/locate",
+			"url": "http://{{host}}:{{port}}/zippy/locate",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "POST",
@@ -288,7 +288,7 @@
 		{
 			"id": "f32f684d-a399-195f-87f0-edddde8c14ed",
 			"headers": "",
-			"url": "http://{{host}}:{{port}}/{{controller}}/persons?zip=",
+			"url": "http://{{host}}:{{port}}/zippy/persons?zip=",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
@@ -306,7 +306,7 @@
 		{
 			"id": "f8d2ded7-e834-879d-8ac3-eec3ce90d224",
 			"headers": "",
-			"url": "http://{{host}}:{{port}}/{{controller}}/index",
+			"url": "http://{{host}}:{{port}}/zippy/index",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
@@ -316,7 +316,7 @@
 			"currentHelper": "normal",
 			"helperAttributes": {},
 			"time": 1482189421152,
-			"name": "Zipper/Index",
+			"name": "Zippy/Index",
 			"description": "",
 			"collectionId": "a8ea80fa-7f32-b7b1-a55e-39bba1ac84a0",
 			"responses": []
