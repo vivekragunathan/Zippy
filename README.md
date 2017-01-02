@@ -16,11 +16,7 @@ _Zippy is the pet name of the pre-assignment project_. 😜
 	- Service methods are ASP.NET Web API based and return JSON data. User interface hasn't been developed (lack of time!). The service/APIs can be tested using any REST client such as [POSTMAN](http://www.getpostman.com).
 	- Namespaces and classes have been named as per the component or facility they would represent in realtime.
 	- `ZResponse` is the standard response for all APIs. It consists of `status`, `message`, and `payload`. The `payload` depends on the API and the scenario. Error handling has been implemented from a moderate to a sufficient extent to let the client know of the error. For instance, even when handling the `locate` POST request, error handling has been implemented to the individual name/address level.
-	- The initial idea was to use one of the two options for data persistence
-		- Simple - LiteDB: simple fast NoSQL like serveless single-file-based database for virtually all kinds of environments (mobile ready)
-		- Ideal - MongoDB or RavenDB
-
-		First choice was LiteDB so that it is easy to demonstrate the data persistence functionality in the application. There were issues loading saved data, which was taking time to resolve. To save time and produce a working solution that demonstrates data persistence, a third dumber (rather than simpler) approach - JSON file dump, has been adopted. For that matter, even the respective class has been named `DumpDbDriver`. Although it cannot be an option for real time, `DumpDbDriver` demonstrates the data persistence abilities in the context of Zippy.
+	- Have used MongoDB as the persistence storage
 - Project/Code Organization
 	- `Controllers/`
 	- `Services/`
