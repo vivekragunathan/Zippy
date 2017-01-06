@@ -61,23 +61,29 @@ namespace Zippy.Data.Providers
 			return Helpers.DistinctOf(fromCache, fromDb);
 		}
 
-		public async Task UpsertAsync(Person person)
+		public async Task<Person> UpsertAsync(string name, string address, string zip)
 		{
-			Throw.IfNull(person, "Cannot save/update null person");
+			Throw.IfBlank(name, $"{nameof(name)} cannot be blank");
+			Throw.IfBlank(address, $"{nameof(address)} cannot be blank");
+			Throw.IfBlank(zip, $"{nameof(zip)} cannot be blank");
 
-			var task = FindPersonAsync(person.Name);
-			var p2 = task.Result;
+			var person = await FindPersonAsync(name);
 
-			if (p2 == null)
+			if (person == null)
 			{
+				person = new Person(name, address, zip);
 				await db.SaveAsync(person);
 			}
 			else
 			{
+				person.Address = address;
+				person.ZipCode = zip;
 				await db.UpdateAsync(person);
 			}
 
 			cache.UpsertPerson(person);
+
+			return person;
 		}
 
 		#endregion

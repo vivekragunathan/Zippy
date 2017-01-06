@@ -18,6 +18,6 @@ namespace Zippy.Data.Contract
 		string GetApiKey();
 		Task<Person> FindPersonAsync(string name);
 		Task<ISet<Person>> FindPersons(string zip);
-		Task UpsertAsync(Person person);
+		Task<Person> UpsertAsync(string name, string address, string zip);
 	}
 }

@@ -14,8 +14,8 @@ namespace Zippy.Services
 		private readonly ILogger<ZCoreService> logger;
 
 		public ZCoreService(IGeocodingServiceProvider gcsProvider,
-                            IZRepository repository,
-                            ILoggerFactory loggerFactory)
+									 IZRepository repository,
+									 ILoggerFactory loggerFactory)
 		{
 			this.gcsProvider = gcsProvider;
 			this.repository = repository;
@@ -51,9 +51,11 @@ namespace Zippy.Services
 				return null;
 			}
 
-			var person = new Person(name, location.FormattedAddress, location.ZipCode);
-			await repository.UpsertAsync(person);
-			return person;
+			return await repository.UpsertAsync(
+				name,
+				location.FormattedAddress,
+				location.ZipCode
+			);
 		}
 	}
 }
